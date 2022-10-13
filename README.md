@@ -8,9 +8,9 @@ In this README is explained how to run the code and how to use the input file. I
 You can use the code *"MASFit_2.py"* with Python running the shell *"runMASFit.sh"*.
 In these shells are conteined all the input file in the correct order.
 
-The file *"inputFlux.txt"* contains the un-obscillated flux of anti-neutrinos from reactor. It has to have the same number of elements of the Nbin in the main code (you can set it from the input file). \\
-The files *"bkg_[bkg name].txt"* contains the energy spectrum of the varius background impemented: geo neutrinos, accidental backgrounds, Li9, (alpha,n) and fast neutrons. They must have the same number of elements of the Nbin in the main code (you can set it from the input file), and the same energies.\\ 
-The file *"inputCores.txt"* contains datas on the distances and powers of the 9 cores used in the simulation. You can change these values but you can't add new cores (because you would need to add also their systematics). If you want to run the code using the ideal baseline (only one core located at 52.5 km) you can choose it from the input file.\\
+The file *"inputFlux.txt"* contains the un-obscillated flux of anti-neutrinos from reactor. It has to have the same number of elements of the Nbin in the main code (you can set it from the input file).  
+The files *"bkg_[bkg name].txt"* contains the energy spectrum of the varius background impemented: geo neutrinos, accidental backgrounds, Li9, (alpha,n) and fast neutrons. They must have the same number of elements of the Nbin in the main code (you can set it from the input file), and the same energies.   
+The file *"inputCores.txt"* contains datas on the distances and powers of the 9 cores used in the simulation. You can change these values but you can't add new cores (because you would need to add also their systematics). If you want to run the code using the ideal baseline (only one core located at 52.5 km) you can choose it from the input file.  
 The file *"MASFit_func_2.py"* is called in the main code and contains some of the functions used. 
 
 The code will produce two different outputs: if you use an Asimov data-set (Fluctuations=0) the output will be a plot of the simulated data with the two fits (called "MASFit_plot.png") and a file with all the free parameters of the fit and their reconsructed values (called "MASFit_parameters.txt"). If the option Fluctuations is True (1) it will produce an istogram with the distribution of the Delta Chi Squared, doing M fits.
