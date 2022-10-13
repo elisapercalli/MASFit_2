@@ -89,20 +89,13 @@ The following lines are parameters for the energy resolution and the sistematic 
 
 Here you have the possibility to chose which parameter of the fit are free anch which are fixed. If you put 0 the parameter will be free, if you put 1 it will be fixed
 
-**Fix_M21**
-
-**Fix_M3l**
-
-**Fix_Theta13**
-
-**Fix_Theta12**
-
-**Fix_N**
-
-**Fix_a**
-
-**Fix_b**
-
+**Fix_M21**  
+**Fix_M3l**  
+**Fix_Theta13**  
+**Fix_Theta12**  
+**Fix_N**  
+**Fix_a**  
+**Fix_b**  
 **Fix_c**
 
 **Ideal_bsl[km]**   If the answer is 0 the real baseline will be used (taken from inputCores.txt). If the answer is different from 0 the code will ignore the file with the cores and simulate only one core located at the distance you have setted here
