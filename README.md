@@ -31,17 +31,17 @@ This is an explanaion of the input file, in which you can control everything of 
 
 The following entries are the phisical parameters for neutrino oscillation
 
-**Sin2Theta12
+**Sin2Theta12**
 
-**Sin2Theta13_NO
+**Sin2Theta13_NO**
 
-**Sin2Theta13_IO
+**Sin2Theta13_IO**
 
-**DeltaM21
+**DeltaM21**
 
-**DeltaM31_NO
+**DeltaM31_NO**
 
-**DeltaM32_IO
+**DeltaM32_IO**
 
 The following lines are parameters for the energy resolution and the sistematic uncertainties
 
@@ -86,23 +86,23 @@ The following lines are parameters for the energy resolution and the sistematic 
 **sigma_sh_B_Li9(%)**	Systematic on background shape for Li9
 
 **Scan?** If the answer is 1 it will produce a plot with the chi squared scan in function of Delta m^2(3l), otherwise nothing will be produced.
+
 Here you have the possibility to chose which parameter of the fit are free anch which are fixed. If you put 0 the parameter will be free, if you put 1 it will be fixed
+**Fix_M21**
 
-**Fix_M21
+**Fix_M3l**
 
-**Fix_M3l
+**Fix_Theta13**
 
-**Fix_Theta13
+**Fix_Theta12**
 
-**Fix_Theta12
+**Fix_N**
 
-**Fix_N
+**Fix_a**
 
-**Fix_a
+**Fix_b**
 
-**Fix_b
-
-**Fix_c
+**Fix_c**
 
 **Ideal_bsl[km]**   If the answer is 0 the real baseline will be used (taken from inputCores.txt). If the answer is different from 0 the code will ignore the file with the cores and simulate only one core located at the distance you have setted here
 
