@@ -88,6 +88,7 @@ The following lines are parameters for the energy resolution and the sistematic 
 **Scan?** If the answer is 1 it will produce a plot with the chi squared scan in function of Delta m^2(3l), otherwise nothing will be produced.
 
 Here you have the possibility to chose which parameter of the fit are free anch which are fixed. If you put 0 the parameter will be free, if you put 1 it will be fixed
+
 **Fix_M21**
 
 **Fix_M3l**
