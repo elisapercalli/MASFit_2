@@ -206,7 +206,7 @@ if(Fluc==False):
         plt.savefig("MASFit_scan_2.pdf")
 
     #Print on file of fit reconstructed parameters
-    file_par = open("MASFit_parameters_2.1.txt", "w")
+    file_par = open("MASFit_parameters.txt", "w")
     file_par.write("Free parameters in fit NO")
     file_par.write("\nParameter\tInj_value\tRec_value\tError\tBias(%)")
     if(Fix_M21==False):
@@ -275,7 +275,7 @@ if(Fluc==False):
     plt.grid()
     plt.xlabel("E_vis [MeV]",fontsize=14)
     plt.ylabel("N events",fontsize=14)
-    plt.savefig("MASFit_plot_2.1.pdf")
+    plt.savefig("MASFit_plot.png")
 
 else:
     #checking for outliers and deleting them
@@ -298,24 +298,7 @@ else:
     plt.grid()
     plt.xlabel(f"$\\Delta$ $\\chi^2$")
     plt.ylabel("N events")
-    plt.savefig("MASFit_CHI_2.1.pdf")
-
-# #Plot dei fondi
-# plt.figure(figsize=(10,8))
-# plt.grid()
-# plt.xlabel("E_vis [MeV]",fontsize=14)
-# plt.ylabel("N events",fontsize=14)
-# plt.plot(xe,fn.FluxNO_ResEn_teo(e,F,Theta13_NO,Theta12,DeltaM21,DeltaM31_NO,Dist,Weights,Ntot,a,b,c),label="Signal", color="black")
-# plt.plot(xe,yNO,label="Signal+Bkg",color="gray")
-# plt.plot(xe,Bg_geo,label="Geo-nu")
-# plt.plot(xe,Bg_acc,label="Accidentals")
-# plt.plot(xe,Bg_alpha,label="(alpha,n)")
-# plt.plot(xe,Bg_Li9,label="Li9")
-# plt.plot(xe,Bg_fn,label="fast neutrons")
-# plt.legend(fontsize=14)
-# plt.xticks(fontsize=14)
-# plt.yticks(fontsize=14)
-# plt.savefig("MASFit_bkg_tot.pdf")
+    plt.savefig("MASFit_CHI.png")
 
 print("Computational time: ",f"{(tm.time()-start_tm):.2f}"," s")
 if(v[48]==True):
