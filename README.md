@@ -13,7 +13,7 @@ The files *"bkg_[bkg name].txt"* contains the energy spectrum of the varius back
 The file *"inputCores.txt"* contains datas on the distances and powers of the 9 cores used in the simulation. You can change these values but you can't add new cores (because you would need to add also their systematics). If you want to run the code using the ideal baseline (only one core located at 52.5 km) you can choose it from the input file.  
 The file *"MASFit_func_2.py"* is called in the main code and contains some of the functions used. 
 
-The code will produce two different outputs: if you use an Asimov data-set (Fluctuations=0) the output will be a plot of the simulated data with the two fits (called "MASFit_plot.png") and a file with all the free parameters of the fit and their reconsructed values (called "MASFit_parameters.txt"). If the option Fluctuations is True (1) it will produce an istogram with the distribution of the Delta Chi Squared, doing M fits.
+The code will produce two different outputs: if you use an Asimov data-set (Fluctuations=0) the output will be a plot of the simulated data with the two fits (called "MASFit_plot.png") and a file with all the free parameters of the fit and their reconsructed values (called "MASFit_parameters.txt"). If the option Fluctuations is True (1) it will produce an istogram with the distribution of the Delta Chi Squared, doing M fits (called "MASFit_CHI.png").
 
 This is an explanaion of the input file, in which you can control everything of the simulation (names and values as to be separated form "tab"):
 
