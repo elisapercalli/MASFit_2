@@ -31,6 +31,7 @@ sigma_sh_B_fn(%)	20
 sigma_B_Li9(%)	20
 sigma_sh_B_Li9(%)	5
 Scan?	0
+Cprr? 1
 Fix_M21	0
 Fix_M3l	0
 Fix_Theta13	1
