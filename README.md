@@ -57,7 +57,8 @@ The following lines are parameters for the energy resolution and the sistematic 
 **sigma_B_Li9(%)**	Systematic on background rate for Li9  
 **sigma_sh_B_Li9(%)**	Systematic on background shape for Li9
 
-**Scan?** If the answer is 1 it will produce a plot with the chi squared scan in function of Delta m^2(3l), otherwise nothing will be produced.
+**Scan?** If the answer is 1 it will produce a plot with the chi squared scan in function of Delta m^2(3l), otherwise nothing will be produced.  
+**Corr?** If the answer is 1 it will produce a correlation matrix of the free parameters of the fit, otherwise nothing will be produced.  
 
 Here you have the possibility to chose which parameter of the fit are free anch which are fixed. If you put 0 the parameter will be free, if you put 1 it will be fixed
 
