@@ -71,7 +71,7 @@ sigma_sh_Li9=v[31]/100
 sigma_B_WR=v[32]/100
 sigma_sh_WR=v[33]/100
 Scan=bool(v[34])
-corr=bool(v[35])
+Corr=bool(v[35])
 #Fit parameters
 Fix_M21=bool(v[36])
 Fix_M3l=bool(v[37])
@@ -197,22 +197,6 @@ for i in range(0,M):
     D_CHI.append(n.fval-m.fval)
 
 if(Fluc==False):
-    #Plot parameters scan
-    if(Scan==True):
-        fig_Z3,ax_Z3 = plt.subplots(1,1)
-        xm,ym,rm = m.mnprofile('M3l',bound=5, subtract_min=False)
-        xn,yn,rn = n.mnprofile('M3l',bound=5, subtract_min=False)
-        ax_Z3.plot(xm, ym, label="NO", markersize=2, color='blue')
-        ax_Z3.plot(np.abs(xn), yn, label="IO", markersize=2, color='red')
-        leg_Z3 = ax_Z3.legend();
-        ax_Z3.grid()
-        plt.title(f"Scan $\\chi^2$")
-        plt.tight_layout()
-        plt.xlabel("$|\\Delta m^2_3l| [10^{-3} eV^2]$")
-        plt.ylabel("$\\chi^2$")
-        fig_Z3.set_size_inches(10, 8)
-        plt.savefig("MASFit_scan_2.pdf")
-
     #Print on file of fit reconstructed parameters
     file_par = open("MASFit_parameters.txt", "w")
     file_par.write("Free parameters in fit NO")
@@ -257,14 +241,31 @@ if(Fluc==False):
     file_par.write(f"\n\nDeltaChi^2 = {n.fval-m.fval:.2f}")
     file_par.close()
 
+    #Plot parameters scan
+    if(Scan==True):
+        fig_Z3,ax_Z3 = plt.subplots(1,1)
+        xm,ym,rm = m.mnprofile('M3l',bound=5, subtract_min=False)
+        xn,yn,rn = n.mnprofile('M3l',bound=5, subtract_min=False)
+        ax_Z3.plot(xm, ym, label="NO", markersize=2, color='blue')
+        ax_Z3.plot(np.abs(xn), yn, label="IO", markersize=2, color='red')
+        leg_Z3 = ax_Z3.legend();
+        ax_Z3.grid()
+        plt.title(f"Scan $\\chi^2$")
+        plt.tight_layout()
+        plt.xlabel("$|\\Delta m^2_3l| [10^{-3} eV^2]$")
+        plt.ylabel("$\\chi^2$")
+        fig_Z3.set_size_inches(10, 8)
+        plt.savefig("MASFit_scan_2.pdf")
+
     #Correlation matrix
-    plt.figure(figsize=(14,10))
-    lab=["T12","M21","M3l","A","B","C","a_C","a_D","a_R1","a_R2","a_R3","a_R4","a_R5","a_R6","a_R7","a_R8","a_R9","a_B1","a_B2","a_B3","a_B4","a_B5","a_B6"]
-    corr = m.covariance.correlation()
-    corr2=np.delete(corr,(0,4,5),axis=0)
-    corr3=np.delete(corr2,(0,4,5),axis=1)
-    sn.heatmap(corr3, xticklabels=lab, yticklabels=lab,fmt=".2f", cmap="BrBG",linewidths=.5,annot=True)
-    plt.savefig("corr_matrix.png")
+    if (Corr==True):
+        plt.figure(figsize=(14,10))
+        lab=["T12","M21","M3l","A","B","C","a_C","a_D","a_R1","a_R2","a_R3","a_R4","a_R5","a_R6","a_R7","a_R8","a_R9","a_B1","a_B2","a_B3","a_B4","a_B5","a_B6"]
+        corr1 = m.covariance.correlation()
+        corr2=np.delete(corr1,(0,4,5),axis=0)
+        corr3=np.delete(corr2,(0,4,5),axis=1)
+        sn.heatmap(corr3, xticklabels=lab, yticklabels=lab,fmt=".2f", cmap="BrBG",linewidths=.5,annot=True)
+        plt.savefig("corr_matrix.png")
 
     #Plot
     plt.figure(figsize=(12, 8))
