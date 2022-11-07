@@ -56,6 +56,8 @@ The following lines are parameters for the energy resolution and the sistematic 
 **sigma_sh_B_fn(%)**	Systematic on background shape for fast neutrons  
 **sigma_B_Li9(%)**	Systematic on background rate for Li9  
 **sigma_sh_B_Li9(%)**	Systematic on background shape for Li9
+**sigma_B_WR(%)**	Systematic on background rate for World reactors  
+**sigma_sh_B_WR(%)**	Systematic on background shape for world reactors    
 
 **Scan?** If the answer is 1 it will produce a plot with the chi squared scan in function of Delta m^2(3l), otherwise nothing will be produced.  
 **Corr?** If the answer is 1 it will produce a correlation matrix of the free parameters of the fit, otherwise nothing will be produced.  
@@ -70,6 +72,14 @@ Here you have the possibility to chose which parameter of the fit are free anch 
 **Fix_a**  
 **Fix_b**  
 **Fix_c**
+
+**IBD_rate**  Expected rate for inverse beta decay events  
+**Geo_nu_rate** Expected rate for geo-neutrinos  
+**Acc_bkg_rate** Expected rate for accidentals background  
+**Li9_bkg_rate**  Expected rate for Li9 background  
+**fn_bkg_rate** Expected rate for fast neutrons background  
+**alpha_n_bkg_rate**  Expected rate for alpha,n bacground  
+**WR_rate** Expected rate for world reactors background  
 
 **Ideal_bsl[km]**   If the answer is 0 the real baseline will be used (taken from inputCores.txt). If the answer is different from 0 the code will ignore the file with the cores and simulate only one core located at the distance you have setted here
 
