@@ -1,4 +1,4 @@
-Fluctuations?	1
+Fluctuations?	0
 M	500
 Nbin	410
 Emin(MeV)	1.8
@@ -43,11 +43,11 @@ Fix_a	0
 Fix_b	0
 Fix_c	0
 IBD_rate    47
-Geo_nu_rate 0
-Acc_bkg_rate    0
-Li9_bkg_rate    0
-fn_bkg_rate 0
-alpha_n_bkg_rate    0
-WR_rate 0
+Geo_nu_rate 1.2
+Acc_bkg_rate    0.8
+Li9_bkg_rate    0.8
+fn_bkg_rate 0.1
+alpha_n_bkg_rate    0.05
+WR_rate 1
 Ideal_bsl[km]   0
 Plot?	1
