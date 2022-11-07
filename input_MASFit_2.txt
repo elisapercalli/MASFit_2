@@ -1,5 +1,5 @@
-Fluctuations?	0
-M	10
+Fluctuations?	1
+M	500
 Nbin	410
 Emin(MeV)	1.8
 Emax(MeV)	10
@@ -30,8 +30,10 @@ sigma_B_fn(%)	100
 sigma_sh_B_fn(%)	20
 sigma_B_Li9(%)	20
 sigma_sh_B_Li9(%)	5
+sigma_B_WR(%)	2
+sigma_sh_B_WR(%)	5
 Scan?	0
-Cprr? 1
+Corr?   0
 Fix_M21	0
 Fix_M3l	0
 Fix_Theta13	1
@@ -41,10 +43,11 @@ Fix_a	0
 Fix_b	0
 Fix_c	0
 IBD_rate    47
-Geo_nu_rate 1.2
-Acc_bkg_rate    0.8
-Li9_bkg_rate    0.8
-fn_bkg_rate 0.1
-alpha_n_bkg_rate    0.05
+Geo_nu_rate 0
+Acc_bkg_rate    0
+Li9_bkg_rate    0
+fn_bkg_rate 0
+alpha_n_bkg_rate    0
+WR_rate 0
 Ideal_bsl[km]   0
 Plot?	1
