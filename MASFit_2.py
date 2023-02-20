@@ -104,7 +104,6 @@ Bg_fn=fn.ReadFlux(InputBkgFile4, Nbin)
 Bg_Li9=fn.ReadFlux(InputBkgFile5, Nbin)
 Bg_WR=fn.ReadFlux(InputBkgFile6, Nbin)
 
-
 #Normalizaion of backgrounds
 Bg_geo*=(Norm_geo/np.sum(Bg_geo))
 Bg_acc*=(Norm_acc/np.sum(Bg_acc))
@@ -131,11 +130,13 @@ for i in range(0,M):
 
     #without statistical fluctuations
     if(Fluc==False):
-        yMis=fn.Flux_teo_bg(e, F, Bg_tot, 1, Theta13_NO, Theta12, DeltaM21, DeltaM31_NO, Dist, Weights, Ntot, a, b, c)
+        yMis=fn.Flux_teo_bg(e, F, Bg_tot, 1, Theta13_NO, Theta12, DeltaM21, DeltaM31_NO, Dist, Weights, Ntot, a, b, c)  #NO
+        #yMis=fn.Flux_teo_bg(e, F, Bg_tot, 0, Theta13_IO, Theta12, DeltaM21, DeltaM32_IO, Dist, Weights, Ntot, a, b, c) #IO
 
     #with statistical fluctuations
     else:
-        yMis=fn.Flux_Real(e, F, Bg_tot, 1, Theta13_NO, Theta12, DeltaM21, DeltaM31_NO, Dist, Weights, Ntot, a, b, c)
+        yMis=fn.Flux_Real2(e, F, Bg_tot, 1, Theta13_NO, Theta12, DeltaM21, DeltaM31_NO, Dist, Weights, Ntot, a, b, c)    #NO      
+        #yMis=fn.Flux_Real2(e, F, Bg_tot, 0, Theta13_IO, Theta12, DeltaM21, DeltaM32_IO, Dist, Weights, Ntot, a, b, c)    #IO
 
     #Computing of errors
     err=np.sqrt(yMis)
@@ -269,46 +270,51 @@ if(Fluc==False):
 
     #Plot
     plt.figure(figsize=(12, 8))
-    plt.title("Fit su NO",fontsize=16)
+    plt.title("Fit assuming NO",fontsize=16)
     plt.errorbar(xe, yMis, yerr=err, markersize=3, fmt="o", label="data", alpha=0.4)
     plt.plot(xe, fn.Flux_teo_bg(e,F,Bg_tot, 1,m.values[0],m.values[1],m.values[2],m.values[3], Dist, Weights,\
         m.values[5],m.values[6],m.values[7],m.values[8]), label="fit NO", color="seagreen")
     plt.plot(xe, fn.Flux_teo_bg(e,F,Bg_tot, 0, n.values[0],n.values[1],n.values[2],n.values[3], Dist, Weights,\
         n.values[5],n.values[6],n.values[7],n.values[8]), label="fit IO", color="coral")
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
 
     # Legend and fit info
     CHI_NO=m.fval/(len(e)-m.nfit)
     CHI_IO=n.fval/(len(e)-n.nfit)
     DeltaCHI=n.fval-m.fval
-    fit_info=[f"$\\Delta$ $\\chi^2$ = {DeltaCHI:.3f}"]
-    fit_info.append(f"$\\chi^2$ / $n_\\mathrm{{dof}}$ NO = {CHI_NO:.3f}")
-    for i in range(6,8):
-        fit_info.append(f"{m.parameters[i]} = ${m.values[i]:.6f} \\pm {m.errors[i]:.6f}$")
-    fit_info.append(f"$\\chi^2$ / $n_\\mathrm{{dof}}$ IO = {CHI_IO:.3f}")
-    for i in range(6,8):
-        fit_info.append(f"{n.parameters[i]} = ${n.values[i]:.6f} \\pm {n.errors[i]:.6f}$")
-    plt.legend(title="\n".join(fit_info),fontsize=12)
+    plt.legend(title=f"$\\Delta$ $\\chi^2$ = {DeltaCHI:.3f}", title_fontsize=14,fontsize=14)
+    plt.rc('legend', fontsize=16)
     plt.grid()
-    plt.xlabel("E_vis [MeV]",fontsize=14)
-    plt.ylabel("N events",fontsize=14)
+    plt.xlabel("E_vis [MeV]",fontsize=16)
+    plt.ylabel("dN/dE [#/ 20 keV]",fontsize=16)
     plt.savefig("MASFit_plot.pdf")
 
 else:
     #checking for outliers and deleting them
     mean_CHI=np.mean(D_CHI)
+    med_CHI=stat.median(D_CHI)
     std_CHI=np.std(D_CHI)
-    print(mean_CHI,std_CHI)
+
     i=0
     j=0
     while (i<(M-j)):
-        if (D_CHI[i]>5*std_CHI+mean_CHI):
+        if (D_CHI[i]>med_CHI+5*std_CHI or D_CHI[i]<med_CHI-5*std_CHI):
+            print("out",D_CHI[i])
             D_CHI.pop(i)
-            i-=1
+            med_CHI=stat.median(D_CHI)
+            std_CHI=np.std(D_CHI)
+            i=-1
             j+=1
         i+=1
 
+    print(stat.median(D_CHI), np.mean(D_CHI),np.std(D_CHI))
+    file_CHI = open("CHI_NO_allN.txt", "w")
+    #file_CHI = open("CHI_IO_allN.txt", "w")
+    for i in range(0,np.size(D_CHI)):
+        file_CHI.write(f"\n{D_CHI[i]}")
+    file_CHI.close()
+    
     #Plot Chi squared
     plt.figure(figsize=(12, 8))
     plt.title("Fit su NO")
