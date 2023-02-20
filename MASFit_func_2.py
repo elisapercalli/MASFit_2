@@ -116,7 +116,7 @@ def Flux_teo(x, flux, ord, T13, T12, M21, M3l, dist, w, N, A, B,C): #x in MeV
 def Flux_teo_bg(x, flux, bkg, ord, T13, T12, M21, M3l, dist, w, N, A, B,C): #x in MeV
     return Flux_teo(x, flux, ord, T13, T12, M21, M3l, dist, w, N, A, B,C)+bkg
 
-#Flux with statistical fluctuations
+#Flux with statistical fluctuations added before energy resolution (NOT USED)
 def Flux_Real(x, flux, bkg, ord, T13, T12, M21, M3l, dist, w, N, A, B, C):
     bin=x[2]-x[1]
     #Theorical flux of anti-nu
@@ -151,3 +151,10 @@ def Flux_Real(x, flux, bkg, ord, T13, T12, M21, M3l, dist, w, N, A, B, C):
     yconv=np.array(out)
     yconv*=N/np.sum(yconv)
     return yconv+bkg
+
+#Flux with statistical fluctuations added after energy resolution (CORRECT)
+def Flux_Real2(x, flux, bkg, ord, T13, T12, M21, M3l, dist, w, N, A, B, C):
+    Y=Flux_teo(x, flux, ord, T13, T12, M21, M3l, dist, w, N, A, B,C)
+    new=np.array(np.random.poisson(Y),dtype='float')
+    new=np.where(new == 0, 1, new)
+    return new+bkg
