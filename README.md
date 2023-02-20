@@ -55,7 +55,7 @@ The following lines are parameters for the energy resolution and the sistematic 
 **sigma_B_fn(%)**	Systematic on background rate for fast neutrons  
 **sigma_sh_B_fn(%)**	Systematic on background shape for fast neutrons  
 **sigma_B_Li9(%)**	Systematic on background rate for Li9  
-**sigma_sh_B_Li9(%)**	Systematic on background shape for Li9
+**sigma_sh_B_Li9(%)**	Systematic on background shape for Li9  
 **sigma_B_WR(%)**	Systematic on background rate for World reactors  
 **sigma_sh_B_WR(%)**	Systematic on background shape for world reactors    
 
